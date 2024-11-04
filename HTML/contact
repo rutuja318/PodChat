@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css.map">
+    <script src="contact.js"></script>
+    
+
+</head>
+<body>
+          <!-- navbar start -->
+          <nav class="navbar">
+       
+            <ul class="d-flex">
+                <li><a href="landing_page.html"> Home</a></li>
+                <li><a href="AboutUs.html">About us</a></li>
+                <li><a href="contact.html"> Contact us</a></li>  
+            </ul>
+        </nav>
+        <!-- navbar end -->
+    
+    <div class="container d-flex  ">
+        <div class="col-7 mx-2 h-auto p-3 border border-2 " id="form">
+            <div class="col">
+                <div class="row h3 mx-2">
+                    Send a Message..!!
+                </div>
+                <div class="row mt-4">
+                        <div class="col text-info">First Name:
+                            <input type="text" class="form-control" id="first" placeholder="Enter first name"><span
+                                id="first_error" class="text-danger"></span>
+                        </div>
+                        <div class="col  text-info">Last Name:
+                            <input type="text" class="form-control" id="last" placeholder="Enter last name"><span
+                                id="last_error" class="text-danger"></span>
+                        </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col text-info">Email:
+                        <input type="text" class="form-control" id="email" placeholder="Enter emailid"><span
+                            id="email-error" class="text-danger"></span>
+                    </div>
+                
+            </div>
+            
+                <div class="row mt-3">
+                    <div class="col  text-info">
+                        <label for="">Give us Seggation:</label>
+                        <textarea name="" class="form-control msg" id="message"
+                            placeholder="Write Your Message here"></textarea>
+                    </div>
+                </div>
+                <div class="send" type="submit" value="submit" onclick="checkemail()" id="b1">
+                    send
+                </div>
+            </div>
+            </form>
+
+        </div>
+        <div class="col-5 mx-2 h-auto border border-2">
+            <div class="col-xxl-2  p-4 m-3 ">
+                <div class="row">
+                    <div class="col h3">Contact Info</div>
+                </div>
+                <div class="row mt-4 height">
+                    <div class="col-1"><img src="icons/location.png" alt=""></div>
+                    <div class="col-11">Chhatrapati Shivaji Maharaj Chowk,Latur</div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-1"><img src="icons/message.png" alt=""></div>
+                    <div class="col-11">latur@gmail.com</div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-1"><img src="icons/phone.png" alt=""></div>
+                    <div class="col-11">+91 3456786965</div>
+                </div>
+                <div class="row mt-3 ms-auto">
+                    <div class="col-1 p-1 m-1"><img src="icons/facebook.png" alt=""></div>
+                    <div class="col-1 p-1 m-1"><img src="icons/twitter.png" alt=""></div>
+                    <div class="col-1 p-1 m-1"><img src="icons/lindin.png" alt=""></div>
+                    <div class="col-1 p-1 m-1"><img src="icons/insta.png" alt=""></div>
+                </div>
+            </div>
+            <div class="col-xxl-2 m-3 ">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.8647127361137!2d76.5610698108498!3d18.399007372803812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf83e9b5b52133%3A0x721fe3790c57eac6!2sChatrapati%20Shivaji%20Maharaj%20Chowk%2C%20Latur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1720979951335!5m2!1sen!2sin"
+                    width="100%" height="250px" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
