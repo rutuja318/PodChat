@@ -1,0 +1,50 @@
+body{
+    align-items: center;
+    justify-content: center;
+}
+.dialogue {
+    margin: 10px;
+    /* background-color: aquamarine; */
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #0d0e0f;
+    display: block; /* Ensure each dialogue box is a block element */
+    max-width: 50vw; /* Limit the width of the dialogue boxes */
+}
+
+.dialogue.Speaker1 {
+    background-color: rgb(94, 254, 176); 
+    text-align: left; 
+    float: left; 
+    clear: both; 
+}
+
+.dialogue.Speaker2 {
+    background-color: rgb(148, 255, 228);
+    text-align: left;
+    float: left; 
+    clear: both; 
+} 
+
+body{
+    padding: 40px;
+    background-color: darkslategrey;
+}
+
+ .conversation-container {
+    width: 60vw; /* Adjust as needed */
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    background-color:transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures that child elements don't overflow */
+    box-sizing: border-box; 
+}  
+
+.audioBox{
+    margin-left: 25%;
+    color: white;
+    width:50%;
+    }
