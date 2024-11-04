@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="landing_page.css">
+</head>
+
+<body>
+    <!-- navbar start -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="landing_page.html">Home</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <!-- navbar end -->
+    <div class="contain">
+        <h1>WELCOME TO OUR PODCHAT</h1>
+        <p>“Step into a world of stories and inspiration through our podcast episodes.”
+        </p>
+        <a href="HomeTrail.html"> <button>VIEW SHOWS</button></a>
+       
+    </div>
+
+</body>
+
+</html>
