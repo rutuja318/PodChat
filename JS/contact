@@ -1,0 +1,78 @@
+function checkemail()
+{
+   
+var first=document.getElementById("first");
+var last=document.getElementById("last");
+var email1=document.getElementById("email");
+var email_check="[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]";
+
+
+first.addEventListener('textInput',first1_verify);
+last.addEventListener('textInput',last1_verify);
+email.addEventListener('textInput',email1_verify);
+number.addEventListener('textNumber',number1_verify);
+if(first.value=='')
+    {
+        document.getElementById("first_error").innerHTML="Enter first name";
+        return false;
+    }
+    else if(last.value=='')
+    {
+        document.getElementById("last_error").innerHTML="Enter last name";
+        return false;
+    }
+
+    // else if(!email1.value.match(email_check))
+    // {
+        
+    //    document.getElementById("email_error").innerHTML="Enter valid Email id";
+    //    return false;
+    // }
+    // else if(number.value.length!=10)
+    // {
+    //     document.getElementById("number_error").innerHTML="Enter 10 digit number";
+    //     return false;
+    // }
+    else{
+        alert("submitted");
+    }
+    
+} 
+function first1_verify()
+{
+    if(first.value=='')
+        {
+            document.getElementById("first_error").innerHTML="Enter first name";
+            first_error.style.display="none";
+            return true;
+
+        }
+}
+function last1_verify()
+{
+    if(last.value=='')
+        {
+            document.getElementById("last_error").innerHTML="Enter last name";
+            last_error.style.display="none";
+            return true;
+        }
+}
+function email1_verify()
+{
+    if(email1.value.match(email_check))
+        {
+            
+           document.getElementById("email_error").innerHTML="Enter valid Email id";
+           email_error.style.display="none";
+           return true;
+}
+}
+function number1_verify()
+{
+    if(number.value.length!=10)
+        {
+            document.getElementById("number_error").innerHTML="Enter 10 digit number";
+            number_error.style.display="none";
+            return true;
+        }
+}
