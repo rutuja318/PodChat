@@ -1,0 +1,57 @@
+from flask import Flask, jsonify
+from flask_cors import CORS
+import pyodbc
+
+def get_pod_details():
+    connection_string = r"DRIVER=ODBC Driver 17 for SQL Server;SERVER=DESKTOP-25UHBCF\SQLEXPRESS;DATABASE=PODCAST_PROJECT;Trusted_Connection=yes;TrustedServerCertificate=yes"
+    connect = pyodbc.connect(connection_string)
+    query = "SELECT podcast_id,title,image_url FROM Podcasts"
+    cursor = connect.cursor()
+    cursor.execute(query)
+    records = cursor.fetchall()
+    cursor.close()
+    connect.close()
+    fdata=[[{"podcast_id": record[0]} for record in records],[{"Title": record[1]} for record in records],[{"URL":record[2]} for record in records]]
+    return fdata
+def fetch_transcript(id):
+    connection_string = r"DRIVER=ODBC Driver 17 for SQL Server;SERVER=DESKTOP-25UHBCF\SQLEXPRESS;DATABASE=PODCAST_PROJECT;Trusted_Connection=yes;TrustedServerCertificate=yes"
+    connect = pyodbc.connect(connection_string)
+    query = "SELECT Speaker1,Speaker2,content FROM Transcripts where podcast_id ="+id
+    query2 = "SELECT audio_url FROM podcasts where podcast_id ="+id
+    
+    cursor = connect.cursor()
+    cursor.execute(query)
+    records = cursor.fetchall()
+    
+    cursor.execute(query2)
+    
+    records2 = cursor.fetchall()
+    cursor.close()
+    connect.close()
+    fdata = [{"Speaker1": record[0]} for record in records]
+    fdata1 = [{"Speaker2": record[1]} for record in records]
+    fdata2 = [{"Transcript": record[2]} for record in records]
+    fdata3 = [{"Audio_url": record[0]} for record in records2]
+    
+    return fdata,fdata1,fdata2,fdata3
+
+app = Flask(__name__) 
+CORS(app)
+
+@app.route("/dog")
+def my_app_dog():
+    data = get_pod_details()
+    return jsonify(data)
+
+@app.route("/transcript")
+def my_app_cat():
+    data = fetch_transcript()
+    return jsonify(data)
+
+@app.route("/transcript/<id>")
+def my_app_human(id):
+    data=fetch_transcript(id)
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
