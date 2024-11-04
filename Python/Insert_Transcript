@@ -1,0 +1,48 @@
+import pyodbc
+import assemblyai as aai
+
+# Connection string for SQL Server
+connection_string = r"DRIVER=ODBC Driver 17 for SQL Server;SERVER=DESKTOP-25UHBCF\SQLEXPRESS;DATABASE=PODCAST_PROJECT;Trusted_Connection=yes;TrustedServerCertificate=yes"
+# AssemblyAI API key and transcription setup
+aai.settings.api_key = "e719182fca544795a980de1eab0dc515"
+transcriber = aai.Transcriber()
+config = aai.TranscriptionConfig(speaker_labels=True)
+print("first step")
+# Transcribing the audio file
+pod=input("enter podcast:")
+s1=input("Enter speaker1:")
+s2=input("Enter speaker2:")
+transcript = transcriber.transcribe(pod, config)
+# print("Done 2")
+    # Specify speaker names
+speaker_names = {
+        "speaker1": s1,
+        "speaker2": s2,
+        # Add additional speakers as needed
+    }
+
+transcript_text ="\n".join([f"{speaker_names.get(utterance.speaker, utterance.speaker)}: {utterance.text}"for utterance in transcript.utterances])
+
+# # Processing transcript data
+#transcript_text = "\n".join([f"{utterance.speaker}: {utterance.text}" for utterance in transcript.utterances])
+
+# Connecting to the database
+connect = pyodbc.connect(connection_string)
+cursor = connect.cursor()
+print(transcript_text)
+# Insert query
+insert_query = """
+INSERT INTO Transcripts (podcast_id, speaker1, speaker2, content)
+VALUES (?, ?, ?, ?)
+"""
+
+# Values to insert
+values = (31, 'Priyanka', 'Suraj', transcript_text)
+
+# Executing the insert query
+cursor.execute(insert_query, values)
+connect.commit()
+
+# Closing the cursor and connection
+cursor.close()
+connect.close()
