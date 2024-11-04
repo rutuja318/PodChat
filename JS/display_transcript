@@ -1,0 +1,99 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to get query parameters by name
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Retrieve the transcript URL from the query parameter
+    const transcriptUrl = 'http://127.0.0.1:5000/transcript/' + getQueryParam('id');
+
+    let speaker1 ="A"
+    let speaker2 ="B"
+    
+    fetch(transcriptUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const audioBox = document.createElement('audio');
+            audioBox.src = data[3][0].Audio_url;
+            audioBox.className = "audioBox";
+            audioBox.controls = true;  // Adding controls to the audio player
+
+            const mainBody = document.getElementById("main");
+            mainBody.appendChild(audioBox);  // Append audio player to the page
+
+            const transcript = data[2][0].Transcript;
+            console.log(data);
+            speaker1=data[0][0].Speaker1
+            speaker2=data[1][0].Speaker2
+            console.log(speaker1)
+            console.log(speaker2)
+            displayTranscript(transcript);
+            
+
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+
+    // Function to display the transcript divided by speaker
+    function displayTranscript(transcript) {
+        const contentDiv = document.getElementById('trans');
+        
+        const speakerRegex = /([A-Z]):/g; // Capture speaker names like A: B: etc.
+        let lastIndex = 0;
+        let match;
+        let previousSpeaker = null; // Initialize the previousSpeaker variable
+
+        // Extract dialogues based on speaker
+        while ((match = speakerRegex.exec(transcript)) !== null) {
+            let speaker = match[1]; // Extract speaker name (e.g., A or B)
+            if(speaker=="A")
+            {
+                speaker=speaker1;
+                css_speaker= "Speaker1"
+            }
+            else
+            {
+                speaker=speaker2
+                css_speaker= "Speaker2"
+            }
+            console.log(speaker)
+            const startIndex = match.index;
+
+            // Extract the dialogue part before the current speaker
+            if (lastIndex !== startIndex) {
+                const dialoguePart = transcript.substring(lastIndex, startIndex).trim();
+                if (dialoguePart) {
+                    appendDialogue(contentDiv, previousSpeaker, dialoguePart);
+                }
+            }
+
+            lastIndex = speakerRegex.lastIndex;
+            previousSpeaker = speaker; // Update previous speaker for next dialogue extraction
+        }
+
+        // Add the last part of the transcript
+        if (lastIndex < transcript.length) {
+            const finalPart = transcript.substring(lastIndex).trim();
+            if (finalPart) {
+                appendDialogue(contentDiv, previousSpeaker, finalPart);
+            }
+        }
+    }
+
+    // Function to append a dialogue to the container
+    function appendDialogue(container, speaker, dialogue) {
+        if (dialogue) {
+            const dialogueBox = document.createElement('div');
+            dialogueBox.className = 'dialogue ' + css_speaker; // Add class based on the speaker
+            dialogueBox.innerHTML = `<strong>${speaker}:</strong> ${dialogue}`;
+            container.appendChild(dialogueBox);
+        }
+    }
+});
