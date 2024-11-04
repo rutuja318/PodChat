@@ -1,0 +1,110 @@
+/* aboutUs page start */
+.navbar{
+    width: auto;
+    height: 70px;
+    background-image: linear-gradient(-80deg,purple,rgb(18, 1, 15)); 
+    display: flex;
+    align-items: center;
+    color: white;
+
+}
+
+nav ul{
+    list-style: none;
+    align-items: right;
+    display: flex;  
+}
+nav ul li{
+    margin: 10px;
+    
+    font-size: large;
+    font-size: 25px;
+}
+nav ul  li a 
+{
+
+    text-decoration: none;
+    color:white;
+}
+.about{
+    text-align: center;
+    margin-top: 2%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.box1{
+    height: 500px;
+    width: auto;
+    border-style:inset;
+    /* background-color: rgb(226, 245, 240); */
+    margin-top: 2%;
+    display: flex;
+    padding: 10px;
+}
+.box1 .col{
+    padding: 10px;
+}
+
+.box1 .col img{
+    width: 600px;
+    margin-top: 4%;
+}
+.box1 .col1{
+    /* background-color: rgb(235, 242, 246); */
+    text-align: center;
+    margin: 10px;
+    padding: 30px;
+}
+.podchat{
+    background-image: linear-gradient(-80deg,purple,black);
+    padding: 5px;
+    color: white;
+}
+.box1 .col1 p{
+    margin-top: 10px;
+    font-size: 23px;
+    font-family:'Times New Roman', Times, serif;
+}
+.box2{
+    border: 1px black;
+    height: 1000px;
+    width:auto;
+    padding: 10px;
+    margin-top: 5%;
+}
+.box2 .section1{
+    height: 300px;
+    width: 1199px;
+    float: left;
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    justify-content: center;
+}
+.box2 .section2{
+    margin-top: 10px;
+    height: 300px;
+    width: 1199px;
+    float: left;
+    display: flex;
+    margin-left: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.box2 .card{
+    height: 300px;
+    min-width: 290px;
+    margin: 3px;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #240024;
+}
+
+.box2 .card img{
+    width: 180px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+.box2 .card h2{
+    margin-top: 10px;
+}
